@@ -1,0 +1,260 @@
+[
+  {
+    "id": "TRX-25426",
+    "userId": 1,
+    "customerName": "Nabila Arisha",
+    "date": "19 Juli 2025",
+    "status": "Delivered",
+    "items": [
+      { "productId": 1, "name": "Luvera Essential Face Wash", "quantity": 1, "price": 189000 }
+    ],
+    "subtotal": 189000,
+    "tax": 18900,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 207900,
+    "paymentMethod": "Credit Card",
+    "shippingAddress": "Jl. Rungkut Asri No. 12, Surabaya Timur"
+  },
+  {
+    "id": "TRX-25427",
+    "userId": 2,
+    "customerName": "Risha Amelia",
+    "date": "19 Juli 2025",
+    "status": "Delivered",
+    "items": [
+      { "productId": 1, "name": "Luvera Essential Face Wash", "quantity": 1, "price": 189000 }
+    ],
+    "subtotal": 189000,
+    "tax": 18900,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 207900,
+    "paymentMethod": "GPay",
+    "shippingAddress": "Jl. Darmo Permai No. 5, Surabaya Barat"
+  },
+  {
+    "id": "TRX-25428",
+    "userId": 3,
+    "customerName": "Edwin Prasetya",
+    "date": "19 Juli 2025",
+    "status": "Delivered",
+    "items": [
+      { "productId": 1, "name": "Luvera Essential Face Wash", "quantity": 1, "price": 189000 }
+    ],
+    "subtotal": 189000,
+    "tax": 18900,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 207900,
+    "paymentMethod": "Credit Card",
+    "shippingAddress": "Jl. Sidoarjo Kota No. 8, Sidoarjo"
+  },
+  {
+    "id": "TRX-25429",
+    "userId": 4,
+    "customerName": "Prasetya Adi",
+    "date": "19 Juli 2025",
+    "status": "Delivered",
+    "items": [
+      { "productId": 2, "name": "Luvera Low Ph Facewash", "quantity": 1, "price": 129000 }
+    ],
+    "subtotal": 129000,
+    "tax": 12900,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 141900,
+    "paymentMethod": "PayPal",
+    "shippingAddress": "Jl. Gayungan No. 22, Surabaya Selatan"
+  },
+  {
+    "id": "TRX-25430",
+    "userId": 5,
+    "customerName": "Rasyid Firmansyah",
+    "date": "19 Juli 2025",
+    "status": "Delivered",
+    "items": [
+      { "productId": 2, "name": "Luvera Low Ph Facewash", "quantity": 1, "price": 129000 }
+    ],
+    "subtotal": 129000,
+    "tax": 12900,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 141900,
+    "paymentMethod": "Credit Card",
+    "shippingAddress": "Jl. Gresik Kota No. 15, Gresik"
+  },
+  {
+    "id": "TRX-25431",
+    "userId": 6,
+    "customerName": "Ridho Kurniawan",
+    "date": "19 Juli 2025",
+    "status": "Delivered",
+    "items": [
+      { "productId": 16, "name": "Luvera 40spf+ Spray Sunscreen", "quantity": 1, "price": 120000 }
+    ],
+    "subtotal": 120000,
+    "tax": 12000,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 132000,
+    "paymentMethod": "GPay",
+    "shippingAddress": "Jl. Perak No. 3, Surabaya Utara"
+  },
+  {
+    "id": "TRX-25432",
+    "userId": 7,
+    "customerName": "Sari Dewi",
+    "date": "18 Juli 2025",
+    "status": "In Processing",
+    "items": [
+      { "productId": 9, "name": "Luvera 10% Vitamin E Serum", "quantity": 1, "price": 189000 },
+      { "productId": 3, "name": "Luvera Essential Moisturizer", "quantity": 1, "price": 123000 }
+    ],
+    "subtotal": 312000,
+    "tax": 31200,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 343200,
+    "paymentMethod": "Credit Card",
+    "shippingAddress": "Jl. Ijen No. 10, Malang"
+  },
+  {
+    "id": "TRX-25433",
+    "userId": 8,
+    "customerName": "Dian Permata",
+    "date": "18 Juli 2025",
+    "status": "In Processing",
+    "items": [
+      { "productId": 5, "name": "Luvera Night Cream", "quantity": 2, "price": 99000 }
+    ],
+    "subtotal": 198000,
+    "tax": 19800,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 217800,
+    "paymentMethod": "PayPal",
+    "shippingAddress": "Jl. Tunjungan No. 7, Surabaya Pusat"
+  },
+  {
+    "id": "TRX-25434",
+    "userId": 9,
+    "customerName": "Farah Nadia",
+    "date": "17 Juli 2025",
+    "status": "Confirmed",
+    "items": [
+      { "productId": 11, "name": "Luvera Salmon DNA Serum", "quantity": 1, "price": 245000 }
+    ],
+    "subtotal": 245000,
+    "tax": 24500,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 269500,
+    "paymentMethod": "Credit Card",
+    "shippingAddress": "Jl. Lamongan Raya No. 18, Lamongan"
+  },
+  {
+    "id": "TRX-25435",
+    "userId": 1,
+    "customerName": "Nabila Arisha",
+    "date": "17 Juli 2025",
+    "status": "Cancelled",
+    "items": [
+      { "productId": 10, "name": "Luvera 10% Vitamin C Serum", "quantity": 1, "price": 164900 }
+    ],
+    "subtotal": 164900,
+    "tax": 16490,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 181390,
+    "paymentMethod": "GPay",
+    "shippingAddress": "Jl. Rungkut Asri No. 12, Surabaya Timur"
+  },
+  {
+    "id": "TRX-25436",
+    "userId": 3,
+    "customerName": "Edwin Prasetya",
+    "date": "16 Juli 2025",
+    "status": "Delivered",
+    "items": [
+      { "productId": 13, "name": "Luvera Rice Mask", "quantity": 1, "price": 99000 },
+      { "productId": 14, "name": "Luvera Pore Clay Mask", "quantity": 1, "price": 98000 }
+    ],
+    "subtotal": 197000,
+    "tax": 19700,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 216700,
+    "paymentMethod": "Credit Card",
+    "shippingAddress": "Jl. Sidoarjo Kota No. 8, Sidoarjo"
+  },
+  {
+    "id": "TRX-25437",
+    "userId": 7,
+    "customerName": "Sari Dewi",
+    "date": "15 Juli 2025",
+    "status": "Delivered",
+    "items": [
+      { "productId": 15, "name": "Luvera 45spf++ Mineral Sunscreen", "quantity": 2, "price": 124500 }
+    ],
+    "subtotal": 249000,
+    "tax": 24900,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 273900,
+    "paymentMethod": "Credit Card",
+    "shippingAddress": "Jl. Ijen No. 10, Malang"
+  },
+  {
+    "id": "TRX-25438",
+    "userId": 2,
+    "customerName": "Risha Amelia",
+    "date": "14 Juli 2025",
+    "status": "Delivered",
+    "items": [
+      { "productId": 6, "name": "Luvera DayCream with 35spf++", "quantity": 1, "price": 124500 },
+      { "productId": 5, "name": "Luvera Night Cream", "quantity": 1, "price": 99000 }
+    ],
+    "subtotal": 223500,
+    "tax": 22350,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 245850,
+    "paymentMethod": "GPay",
+    "shippingAddress": "Jl. Darmo Permai No. 5, Surabaya Barat"
+  },
+  {
+    "id": "TRX-25439",
+    "userId": 5,
+    "customerName": "Rasyid Firmansyah",
+    "date": "13 Juli 2025",
+    "status": "Delivered",
+    "items": [
+      { "productId": 8, "name": "Luvera Anti-aging Cream", "quantity": 1, "price": 149000 }
+    ],
+    "subtotal": 149000,
+    "tax": 14900,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 163900,
+    "paymentMethod": "PayPal",
+    "shippingAddress": "Jl. Gresik Kota No. 15, Gresik"
+  },
+  {
+    "id": "TRX-25440",
+    "userId": 8,
+    "customerName": "Dian Permata",
+    "date": "12 Juli 2025",
+    "status": "Delivered",
+    "items": [
+      { "productId": 7, "name": "Luvera Anti-aging Eye Cream", "quantity": 1, "price": 159000 }
+    ],
+    "subtotal": 159000,
+    "tax": 15900,
+    "discount": 0,
+    "shippingRate": 0,
+    "total": 174900,
+    "paymentMethod": "Credit Card",
+    "shippingAddress": "Jl. Tunjungan No. 7, Surabaya Pusat"
+  }
+]

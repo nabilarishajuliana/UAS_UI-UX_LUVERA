@@ -1,0 +1,118 @@
+[
+  {
+    "id": 1,
+    "title": "Glow Smarter: 5 Daily Habits for Radiant Skin",
+    "slug": "glow-smarter-5-daily-habits",
+    "date": "19 JULI 2025",
+    "image": "/images/articles/article-1.jpg",
+    "tags": ["Tips", "AntiAging", "Ingredients", "Organic", "EcoFriendly"],
+    "excerpt": "Few ingredients have been debated as much in recent years as coconut oil. Is it or is it not the 'miracle product' so many claim it to be? We answer: Like anything, it depends.",
+    "content": [
+      {
+        "type": "heading",
+        "text": "START WITH THE RIGHT KIND OF HYDRATION"
+      },
+      {
+        "type": "paragraph",
+        "text": "True hydration begins with choosing the right ingredients. Drinking enough water is important, but your skin also needs topical support to stay moisturized. Look for products that contain humectants like hyaluronic acid, glycerin, and aloe vera — these ingredients draw moisture into the skin and help keep it there. For best results, apply your hydrating products while your skin is still slightly damp after cleansing. This helps the humectants work more effectively and gives your skin a healthier, dewy appearance."
+      },
+      {
+        "type": "heading",
+        "text": "LOCK THE MOISTURE IN WITH PROPER LAYERING"
+      },
+      {
+        "type": "paragraph",
+        "text": "Once your skin is hydrated, the next step is to lock that moisture in. Start with a hydrating toner or essence, follow with a hydration-focused serum, and finish with a moisturizer that suits your skin type. If you have dry skin, go for a richer cream. If your skin is oily, choose a lightweight gel-cream that absorbs quickly without leaving residue. This layering technique strengthens your skin barrier and prevents moisture from evaporating, keeping your complexion soft and nourished throughout the day."
+      },
+      {
+        "type": "heading",
+        "text": "BOOST HYDRATION THROUGHOUT THE DAY"
+      },
+      {
+        "type": "paragraph",
+        "text": "Hydration doesn't stop after your morning routine. Small habits during the day can make a big difference. Use a hydrating facial mist to refresh and rehydrate your skin — especially if you spend time in air-conditioned or dry environments. It provides an instant boost without disturbing your makeup. Consider using a humidifier in your room or workspace to maintain moisture in the air. At night, finish with a sleeping mask or a more intensive moisturizer to repair your skin barrier and lock in hydration while you sleep, so you wake up with soft, supple skin."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Hydration Hacks: Simple Ways to Keep Your Skin Moisturized All Day",
+    "slug": "hydration-hacks-moisturized-all-day",
+    "date": "19 JULI 2025",
+    "image": "/images/articles/article-2.jpg",
+    "tags": ["Tips", "AntiAging", "Ingredients", "Organic", "EcoFriendly"],
+    "excerpt": "Keeping your skin hydrated doesn't have to be complicated. In this article, we'll explore practical daily habits to help your skin stay supple, plump, and glowing throughout the day.",
+    "content": [
+      {
+        "type": "heading",
+        "text": "WHY HYDRATION MATTERS MORE THAN YOU THINK"
+      },
+      {
+        "type": "paragraph",
+        "text": "Hydrated skin is the foundation of a healthy, glowing complexion. When your skin lacks moisture, it becomes dull, tight, and more prone to fine lines. Proper hydration helps maintain your skin's elasticity, supports its natural barrier function, and creates a plump, youthful appearance."
+      },
+      {
+        "type": "heading",
+        "text": "THE BEST INGREDIENTS FOR LASTING HYDRATION"
+      },
+      {
+        "type": "paragraph",
+        "text": "Look for products containing hyaluronic acid, ceramides, and squalane. These ingredients work at different levels of the skin to attract, retain, and seal in moisture. Layer them from thinnest to thickest consistency for maximum effectiveness."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "The Cleanser Rule: How to Choose and Use the Right Cleanser",
+    "slug": "the-cleanser-rule",
+    "date": "19 JULI 2025",
+    "image": "/images/articles/article-3.jpg",
+    "tags": ["Tips", "AntiAging", "Ingredients", "Organic", "EcoFriendly"],
+    "excerpt": "A good skincare routine starts with the right cleanser. This guide breaks down the essentials: how different formulas work, what ingredients to look for, and the proper way to cleanse.",
+    "content": [
+      {
+        "type": "heading",
+        "text": "UNDERSTANDING YOUR SKIN TYPE"
+      },
+      {
+        "type": "paragraph",
+        "text": "The first step to choosing the right cleanser is understanding your skin type. Oily skin benefits from gel or foam cleansers that remove excess sebum. Dry skin needs cream or milk cleansers that hydrate while cleaning. Sensitive skin should use fragrance-free, gentle formulas that won't cause irritation."
+      },
+      {
+        "type": "heading",
+        "text": "THE DOUBLE CLEANSE METHOD"
+      },
+      {
+        "type": "paragraph",
+        "text": "Double cleansing has become a cornerstone of effective skincare. Start with an oil-based cleanser to dissolve makeup and sunscreen, then follow with a water-based cleanser to remove remaining impurities. This two-step process ensures your skin is truly clean without being stripped of its natural oils."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Morning vs. Night: Understanding Your Skin's Needs at Different Times of Day",
+    "slug": "morning-vs-night-skincare",
+    "date": "19 JULI 2025",
+    "image": "/images/articles/article-4.jpg",
+    "tags": ["Tips", "AntiAging", "Ingredients", "Organic", "EcoFriendly"],
+    "excerpt": "Your skin works differently throughout the day. In this blog, we'll break down what your skin needs in the morning for protection and freshness, and what it needs at night for repair.",
+    "content": [
+      {
+        "type": "heading",
+        "text": "YOUR MORNING ROUTINE: PROTECT AND PREVENT"
+      },
+      {
+        "type": "paragraph",
+        "text": "Your morning skincare routine should focus on protection. After cleansing, apply an antioxidant serum (like Vitamin C) to fight free radical damage throughout the day. Follow with a moisturizer and always finish with sunscreen — even on cloudy days. UV damage is the number one cause of premature aging."
+      },
+      {
+        "type": "heading",
+        "text": "YOUR NIGHT ROUTINE: REPAIR AND RENEW"
+      },
+      {
+        "type": "paragraph",
+        "text": "Night is when your skin goes into repair mode. Use active ingredients like retinol, AHA/BHA, or peptides to support cell turnover and collagen production. Apply a richer moisturizer or sleeping mask to nourish your skin while it regenerates. From antioxidants and SPF to restorative treatments and calming ingredients, discover how to create a balanced AM-PM routine that truly supports your skin's natural cycle."
+      }
+    ]
+  }
+]

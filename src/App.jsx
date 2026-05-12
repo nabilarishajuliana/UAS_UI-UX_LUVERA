@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
+import ScrollToTop from './utils/ScrollToTop'
 // Layouts
 import StorefrontLayout from './components/storefront/StorefrontLayout'
 import AdminLayout from './components/admin/AdminLayout'
@@ -26,6 +26,7 @@ import KelolaTransaksi from './pages/admin/KelolaTransaksi'
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
 
         {/* ==========================================

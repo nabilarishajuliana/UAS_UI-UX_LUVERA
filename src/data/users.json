@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Nabila Arisha",
+    "email": "nabila@email.com",
+    "role": "customer",
+    "avatar": "/images/users/user-1.jpg",
+    "phone": "081234567890",
+    "address": "Surabaya Timur",
+    "joinDate": "2025-01-15",
+    "totalOrders": 5,
+    "totalSpent": 945000
+  },
+  {
+    "id": 2,
+    "name": "Risha Amelia",
+    "email": "risha@email.com",
+    "role": "customer",
+    "avatar": "/images/users/user-2.jpg",
+    "phone": "081298765432",
+    "address": "Surabaya Barat",
+    "joinDate": "2025-02-20",
+    "totalOrders": 3,
+    "totalSpent": 567000
+  },
+  {
+    "id": 3,
+    "name": "Edwin Prasetya",
+    "email": "edwin@email.com",
+    "role": "customer",
+    "avatar": "/images/users/user-3.jpg",
+    "phone": "081312345678",
+    "address": "Sidoarjo",
+    "joinDate": "2025-03-10",
+    "totalOrders": 7,
+    "totalSpent": 1230000
+  },
+  {
+    "id": 4,
+    "name": "Prasetya Adi",
+    "email": "prasetya@email.com",
+    "role": "customer",
+    "avatar": "/images/users/user-4.jpg",
+    "phone": "081387654321",
+    "address": "Surabaya Selatan",
+    "joinDate": "2025-03-25",
+    "totalOrders": 2,
+    "totalSpent": 318000
+  },
+  {
+    "id": 5,
+    "name": "Rasyid Firmansyah",
+    "email": "rasyid@email.com",
+    "role": "customer",
+    "avatar": "/images/users/user-5.jpg",
+    "phone": "081456789012",
+    "address": "Gresik",
+    "joinDate": "2025-04-05",
+    "totalOrders": 4,
+    "totalSpent": 756000
+  },
+  {
+    "id": 6,
+    "name": "Ridho Kurniawan",
+    "email": "ridho@email.com",
+    "role": "customer",
+    "avatar": "/images/users/user-6.jpg",
+    "phone": "081567890123",
+    "address": "Surabaya Utara",
+    "joinDate": "2025-04-18",
+    "totalOrders": 1,
+    "totalSpent": 189000
+  },
+  {
+    "id": 7,
+    "name": "Sari Dewi",
+    "email": "sari@email.com",
+    "role": "customer",
+    "avatar": "/images/users/user-7.jpg",
+    "phone": "081678901234",
+    "address": "Malang",
+    "joinDate": "2025-05-02",
+    "totalOrders": 6,
+    "totalSpent": 1120000
+  },
+  {
+    "id": 8,
+    "name": "Dian Permata",
+    "email": "dian@email.com",
+    "role": "customer",
+    "avatar": "/images/users/user-8.jpg",
+    "phone": "081789012345",
+    "address": "Surabaya Pusat",
+    "joinDate": "2025-05-20",
+    "totalOrders": 3,
+    "totalSpent": 472000
+  },
+  {
+    "id": 9,
+    "name": "Farah Nadia",
+    "email": "farah@email.com",
+    "role": "customer",
+    "avatar": "/images/users/user-9.jpg",
+    "phone": "081890123456",
+    "address": "Lamongan",
+    "joinDate": "2025-06-08",
+    "totalOrders": 2,
+    "totalSpent": 288000
+  },
+  {
+    "id": 10,
+    "name": "Admin Luvera",
+    "email": "admin@luvera.com",
+    "role": "admin",
+    "avatar": "/images/users/admin.jpg",
+    "phone": "081900000000",
+    "address": "Surabaya",
+    "joinDate": "2025-01-01",
+    "totalOrders": 0,
+    "totalSpent": 0
+  }
+]
