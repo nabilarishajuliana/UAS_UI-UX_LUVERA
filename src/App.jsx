@@ -1,121 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+// Layouts
+import StorefrontLayout from './components/storefront/StorefrontLayout'
+import AdminLayout from './components/admin/AdminLayout'
+
+// Storefront Pages
+import LandingPage from './pages/storefront/LandingPage'
+import KatalogProduk from './pages/storefront/KatalogProduk'
+import DetailProduk from './pages/storefront/DetailProduk'
+import ArsipArtikel from './pages/storefront/ArsipArtikel'
+import DetailArtikel from './pages/storefront/DetailArtikel'
+import Keranjang from './pages/storefront/Keranjang'
+import Pembayaran from './pages/storefront/Pembayaran'
+import RiwayatTransaksi from './pages/storefront/RiwayatTransaksi'
+import Login from './pages/storefront/Login'
+import Register from './pages/storefront/Register'
+
+// Admin Pages
+import Dashboard from './pages/admin/Dashboard'
+import KelolaProduk from './pages/admin/KelolaProduk'
+import KelolaArtikel from './pages/admin/KelolaArtikel'
+import KelolaPengguna from './pages/admin/KelolaPengguna'
+import KelolaTransaksi from './pages/admin/KelolaTransaksi'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <BrowserRouter>
+      <Routes>
 
-      <div className="ticks"></div>
+        {/* ==========================================
+            STOREFRONT — Halaman Customer
+            Semua halaman ini punya Navbar + Footer
+            ========================================== */}
+        <Route element={<StorefrontLayout />}>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/shop" element={<KatalogProduk />} />
+          <Route path="/shop/:id" element={<DetailProduk />} />
+          <Route path="/blog" element={<ArsipArtikel />} />
+          <Route path="/blog/:id" element={<DetailArtikel />} />
+          <Route path="/cart" element={<Keranjang />} />
+          <Route path="/checkout" element={<Pembayaran />} />
+          <Route path="/orders" element={<RiwayatTransaksi />} />
+        </Route>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        {/* ==========================================
+            AUTH — Halaman Login/Register
+            Tanpa Navbar & Footer (standalone)
+            ========================================== */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+        {/* ==========================================
+            ADMIN — Halaman Admin Panel
+            Semua halaman ini punya Sidebar + Top Bar
+            ========================================== */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="products" element={<KelolaProduk />} />
+          <Route path="blog" element={<KelolaArtikel />} />
+          <Route path="customers" element={<KelolaPengguna />} />
+          <Route path="orders" element={<KelolaTransaksi />} />
+        </Route>
+
+      </Routes>
+    </BrowserRouter>
   )
 }
 
