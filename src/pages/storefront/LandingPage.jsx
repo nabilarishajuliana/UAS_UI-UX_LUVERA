@@ -93,7 +93,7 @@ const LandingPage = () => {
       <section id="about">
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Kiri — teks */}
-          <div className="bg-luvera-dark px-6 md:px-14 py-16 md:py-20 reveal">
+          <div className="bg-luvera-dark h-screen px-6 md:px-14 py-16 md:py-20 reveal">
             <h2 className="font-serif text-4xl md:text-5xl text-white font-normal mb-3">
               Features
             </h2>
