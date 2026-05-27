@@ -1,8 +1,126 @@
+import { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { getCurrentUser, logout } from '../../utils/authHelper'
+import transactions from '../../data/transactions.json'
+import products from '../../data/products.json'
+
 const RiwayatTransaksi = () => {
+  const navigate = useNavigate()
+  const user = getCurrentUser()
+
+  // Filter transaksi milik user yang login
+  const userTransactions = transactions.filter((t) => t.userId === user?.id)
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login')
+  }
+
+  // Scroll reveal
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div className="min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 py-20">
-        <h1 className="font-serif text-4xl">Riwayat Transaksi</h1>
+    <div className="min-h-screen bg-luvera-cream">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 py-10 md:py-14">
+        <div className="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-8">
+
+          {/* LEFT — Account Sidebar */}
+          <div className="bg-white rounded-lg p-6 h-fit">
+            <h2 className="font-serif text-xl text-luvera-text mb-4">Account</h2>
+            <nav className="space-y-2 text-sm">
+              <p className="text-luvera-muted cursor-pointer hover:text-luvera-text transition-colors">Contact information</p>
+              <p className="text-luvera-text font-semibold">Orders</p>
+              <button onClick={handleLogout} className="text-luvera-brown hover:underline transition-colors">Log Out</button>
+            </nav>
+          </div>
+
+          {/* RIGHT — Orders */}
+          <div>
+            <h2 className="font-serif text-xl text-luvera-text mb-6">
+              Your Orders <span className="text-luvera-muted font-sans text-sm font-normal">(All)</span>
+            </h2>
+
+            {userTransactions.length === 0 ? (
+              <div className="bg-white rounded-lg p-8 text-center">
+                <p className="text-luvera-muted mb-4">You don't have any orders yet.</p>
+                <Link to="/shop" className="inline-block bg-luvera-dark text-white text-sm font-medium px-6 py-3 hover:bg-luvera-brown transition-colors">
+                  Start Shopping
+                </Link>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {userTransactions.map((trx) => (
+                  <div key={trx.id} className="bg-white rounded-lg p-6 reveal">
+                    {/* Order Header */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                      <p className="text-sm text-luvera-text">
+                        <span className="font-medium">Order No. {trx.id}</span>, {trx.date}
+                      </p>
+                      <div className="flex items-center gap-3">
+                        <span className={`text-xs font-medium px-3 py-1 rounded-full ${
+                          trx.status === 'Delivered' ? 'bg-green-100 text-green-700' :
+                          trx.status === 'In Processing' ? 'bg-blue-100 text-blue-700' :
+                          trx.status === 'Confirmed' ? 'bg-yellow-100 text-yellow-700' :
+                          'bg-red-100 text-red-700'
+                        }`}>
+                          {trx.status}
+                        </span>
+                        {trx.status !== 'Delivered' && trx.status !== 'Cancelled' && (
+                          <button className="text-xs text-red-500 hover:underline">Cancel</button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Order Items */}
+                    {trx.items.map((item, i) => {
+                      const product = products.find((p) => p.id === item.productId)
+                      return (
+                        <div key={i} className="flex items-center gap-4 py-3 border-t border-luvera-cream-dark">
+                          <img
+                            src={product?.image || '/images/products/face-wash.png'}
+                            alt={item.name}
+                            className="w-16 h-16 rounded-sm object-cover bg-luvera-cream-dark"
+                          />
+                          <div className="flex-1">
+                            <p className="text-sm font-medium text-luvera-text">{item.name}</p>
+                            <p className="text-xs text-luvera-muted">{item.quantity} Pcs</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-sm text-luvera-text">Rp {item.price.toLocaleString('id-ID')}</p>
+                            <p className="text-xs text-luvera-muted">Total: Rp {(item.price * item.quantity).toLocaleString('id-ID')}</p>
+                          </div>
+                        </div>
+                      )
+                    })}
+
+                    {/* Order Total */}
+                    <div className="border-t border-luvera-cream-dark pt-3 mt-2 space-y-1 text-sm text-right">
+                      <p className="text-luvera-muted">STATUS: <span className="font-medium text-luvera-text">{trx.status}</span></p>
+                      <p className="text-luvera-muted">Total: Rp {trx.subtotal.toLocaleString('id-ID')}</p>
+                      <p className="text-luvera-muted">Tax: <span className="text-luvera-brown">Rp {trx.tax.toLocaleString('id-ID')}</span></p>
+                      <p className="font-semibold text-luvera-text">Total: Rp {trx.total.toLocaleString('id-ID')}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+        </div>
       </div>
     </div>
   )

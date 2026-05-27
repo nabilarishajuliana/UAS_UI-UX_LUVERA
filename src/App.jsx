@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { RequireAuth, RequireAdmin } from './components/ProtectedRoute'
 import ScrollToTop from './utils/ScrollToTop'
 // Layouts
 import StorefrontLayout from './components/storefront/StorefrontLayout'
@@ -40,8 +41,8 @@ function App() {
           <Route path="/blog" element={<ArsipArtikel />} />
           <Route path="/blog/:id" element={<DetailArtikel />} />
           <Route path="/cart" element={<Keranjang />} />
-          <Route path="/checkout" element={<Pembayaran />} />
-          <Route path="/orders" element={<RiwayatTransaksi />} />
+<Route path="/checkout" element={<RequireAuth><Pembayaran /></RequireAuth>} />
+<Route path="/orders" element={<RequireAuth><RiwayatTransaksi /></RequireAuth>} />
         </Route>
 
         {/* ==========================================
@@ -55,7 +56,7 @@ function App() {
             ADMIN — Halaman Admin Panel
             Semua halaman ini punya Sidebar + Top Bar
             ========================================== */}
-        <Route path="/admin" element={<AdminLayout />}>
+<Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
           <Route index element={<Dashboard />} />
           <Route path="products" element={<KelolaProduk />} />
           <Route path="blog" element={<KelolaArtikel />} />
