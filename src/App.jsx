@@ -23,6 +23,10 @@ import KelolaProduk from './pages/admin/KelolaProduk'
 import KelolaArtikel from './pages/admin/KelolaArtikel'
 import KelolaPengguna from './pages/admin/KelolaPengguna'
 import KelolaTransaksi from './pages/admin/KelolaTransaksi'
+import AdminAddProduct from './pages/admin/AdminAddProduct'
+import AdminAddArticle from './pages/admin/AdminAddArticle'
+import AdminDetailPengguna from './pages/admin/AdminDetailPengguna'
+import AdminDetailTransaksi from './pages/admin/AdminDetailTransaksi'
 
 function App() {
   return (
@@ -41,8 +45,8 @@ function App() {
           <Route path="/blog" element={<ArsipArtikel />} />
           <Route path="/blog/:id" element={<DetailArtikel />} />
           <Route path="/cart" element={<Keranjang />} />
-<Route path="/checkout" element={<RequireAuth><Pembayaran /></RequireAuth>} />
-<Route path="/orders" element={<RequireAuth><RiwayatTransaksi /></RequireAuth>} />
+          <Route path="/checkout" element={<RequireAuth><Pembayaran /></RequireAuth>} />
+          <Route path="/orders" element={<RequireAuth><RiwayatTransaksi /></RequireAuth>} />
         </Route>
 
         {/* ==========================================
@@ -56,12 +60,18 @@ function App() {
             ADMIN — Halaman Admin Panel
             Semua halaman ini punya Sidebar + Top Bar
             ========================================== */}
-<Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
+        <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
           <Route index element={<Dashboard />} />
           <Route path="products" element={<KelolaProduk />} />
+          <Route path="products/add" element={<AdminAddProduct />} />
+          <Route path="products/:id" element={<AdminAddProduct />} />
           <Route path="blog" element={<KelolaArtikel />} />
+          <Route path="blog/add" element={<AdminAddArticle />} />
+          <Route path="blog/:id" element={<AdminAddArticle />} />
           <Route path="customers" element={<KelolaPengguna />} />
+          <Route path="customers/:id" element={<AdminDetailPengguna />} />
           <Route path="orders" element={<KelolaTransaksi />} />
+          <Route path="orders/:id" element={<AdminDetailTransaksi />} />
         </Route>
 
       </Routes>

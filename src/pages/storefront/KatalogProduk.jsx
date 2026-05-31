@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import products from "../../data/products.json";
+import { getProducts } from '../../utils/productHelper'
 import ProductCard from "../../components/storefront/ProductCard";
 
 const categories = [
@@ -12,6 +12,8 @@ const categories = [
   "Makeup",
 ];
 const ITEMS_PER_PAGE = 8;
+
+const products = getProducts()
 
 const KatalogProduk = () => {
   const [activeCategory, setActiveCategory] = useState("All");
