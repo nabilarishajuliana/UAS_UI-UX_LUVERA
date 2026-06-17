@@ -166,9 +166,9 @@ const LandingPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { img: '/images/testimonials/testi-1.png', text: "My skin feels smoother than ever. I didn't expect results this fast, but within 2 weeks I could already see a real glow.", name: 'Chloe Bennett' },
-              { img: '/images/testimonials/testi-2.png', text: "I've tried so many products before, but this is the one that truly calmed and softened my skin. It's now part of my daily routine.", name: 'Amelia Heart' },
-              { img: '/images/testimonials/testi-3.png', text: "The texture is amazing. My skin looks healthier and more fresh every morning.", name: 'Shanon' },
+              { img: '/images/testimonials/testi-1.jpg', text: "My skin feels smoother than ever. I didn't expect results this fast, but within 2 weeks I could already see a real glow.", name: 'Chloe Bennett' },
+              { img: '/images/testimonials/testi-2.jpg', text: "I've tried so many products before, but this is the one that truly calmed and softened my skin. It's now part of my daily routine.", name: 'Amelia Heart' },
+              { img: '/images/testimonials/testi-3.jpg', text: "The texture is amazing. My skin looks healthier and more fresh every morning.", name: 'Shanon' },
             ].map((testi, i) => (
               <div
                 key={i}

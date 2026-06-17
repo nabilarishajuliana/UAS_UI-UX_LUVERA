@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getProducts } from '../../utils/productHelper'
+// import { getProducts } from '../../utils/productHelper'
+import products from '../../data/products.json'
 import ProductCard from "../../components/storefront/ProductCard";
 import StarRating from "../../components/storefront/StarRating";
 import { addToCart } from "../../utils/cartHelper";
 
 const DetailProduk = () => {
-  const products = getProducts()
+  // const products = getProducts()
   const { id } = useParams();
 const product = products.find((p) => p.id === parseInt(id))
   const [quantity, setQuantity] = useState(1);

@@ -99,7 +99,7 @@ const AdminDetailTransaksi = () => {
               <h3 className="text-sm font-semibold text-gray-800">Customer</h3>
             </div>
             <p className="text-xs text-gray-600 leading-relaxed">Full Name: {order.customerName}</p>
-            <p className="text-xs text-gray-600">Phone: -</p>
+            <p className="text-xs text-gray-600">Phone: 08136728908</p>
           </div>
 
           <div className="bg-teal-50 rounded-lg p-4">

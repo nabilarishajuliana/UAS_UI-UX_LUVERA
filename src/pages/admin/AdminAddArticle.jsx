@@ -10,7 +10,7 @@ const AdminAddArticle = () => {
   const [form, setForm] = useState({
     title: '',
     excerpt: '',
-    image: '/images/articles/article-1.png',
+    image: '/images/articles/article-1.jpg',
     tags: '',
     contentText: '',
   })

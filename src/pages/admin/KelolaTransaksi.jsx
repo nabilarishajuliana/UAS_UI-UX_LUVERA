@@ -135,7 +135,7 @@ const KelolaTransaksi = () => {
                       <td className="px-4 py-3.5 text-sm text-gray-600">{order.date}</td>
                       <td className="px-4 py-3.5">
                         <div className="flex items-center gap-2">
-                          <div className="w-7 h-7 rounded-full bg-gray-200 flex-shrink-0" />
+                          {/* <div className="w-7 h-7 rounded-full bg-gray-200 flex-shrink-0" /> */}
                           <span className="text-sm text-gray-700">{order.customerName.split(' ')[0]}</span>
                         </div>
                       </td>
