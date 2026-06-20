@@ -23,6 +23,11 @@ export const login = (email, password) => {
 // Logout
 export const logout = () => {
   localStorage.removeItem('luvera-user')
+  // Reset semua data admin ke awal
+  localStorage.removeItem('luvera-products')
+  localStorage.removeItem('luvera-articles')
+  localStorage.removeItem('luvera-transactions')
+  localStorage.removeItem('luvera-users')
 }
 
 // Get current user

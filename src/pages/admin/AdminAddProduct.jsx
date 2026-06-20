@@ -15,7 +15,7 @@ const AdminAddProduct = () => {
     stock: '',
     category: 'Face Care',
     size: '',
-    image: '/images/products/face-wash.png',
+    image: '/images/products/face-wash.jpg',
     featured: false,
   })
   const [saved, setSaved] = useState(false)
