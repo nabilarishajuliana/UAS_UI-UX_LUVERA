@@ -46,3 +46,26 @@ export const isAdmin = () => {
   const user = getCurrentUser()
   return user && user.role === 'admin'
 }
+
+// --- FUNGSI BARU UNTUK UPDATE PROFIL SESSION (ADMIN / USER) ---
+export const updateCurrentUserProfile = (updatedData) => {
+  const currentUser = getCurrentUser()
+  if (!currentUser) return null
+
+  // Gabungkan data lama dengan data baru yang di-edit
+  const newUserSession = { ...currentUser, ...updatedData }
+  
+  // Save kembali ke session login
+  localStorage.setItem('luvera-user', JSON.stringify(newUserSession))
+
+  // OPTIONAL: Jika kamu juga ingin agar perubahan data admin ini masuk 
+  // ke list 'luvera-users' (agar sinkron di tabel Customer/User), kita handle di sini:
+  const allUsersData = localStorage.getItem('luvera-users')
+  if (allUsersData) {
+    const parsedUsers = JSON.parse(allUsersData)
+    const updatedList = parsedUsers.map((u) => u.id === newUserSession.id ? newUserSession : u)
+    localStorage.setItem('luvera-users', JSON.stringify(updatedList))
+  }
+
+  return newUserSession
+}
