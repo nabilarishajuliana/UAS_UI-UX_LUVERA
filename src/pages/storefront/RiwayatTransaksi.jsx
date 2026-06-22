@@ -1,19 +1,54 @@
-import { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom' // Tambahkan useLocation
 import { getCurrentUser, logout } from '../../utils/authHelper'
 import transactions from '../../data/transactions.json'
 import products from '../../data/products.json'
 
 const RiwayatTransaksi = () => {
   const navigate = useNavigate()
+  const location = useLocation() // Inisialisasi useLocation
   const user = getCurrentUser()
-  const [activeTab, setActiveTab] = useState('orders')
+  
+  // Deteksi tab aktif dari navigasi luar, jika tidak ada, default ke 'orders'
+  const [activeTab, setActiveTab] = useState(location.state?.defaultTab || 'orders')
+  
+  // State untuk menyimpan URL avatar user saat ini
+  const [avatar, setAvatar] = useState(user?.avatar || '/images/users/default.jpg')
+  const fileInputRef = useRef(null)
+
+  // Sinkronisasi tab jika user berpindah tab langsung dari Navbar tanpa muat ulang halaman
+  useEffect(() => {
+    if (location.state?.defaultTab) {
+      setActiveTab(location.state.defaultTab)
+    }
+  }, [location.state])
 
   const userTransactions = transactions.filter((t) => t.userId === user?.id)
 
   const handleLogout = () => {
     logout()
     navigate('/login')
+  }
+
+  // Fungsi untuk menangani perubahan foto profil
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      const localImageUrl = URL.createObjectURL(file)
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        const base64String = reader.result
+        setAvatar(base64String)
+
+        const updatedUser = { ...user, avatar: base64String }
+        localStorage.setItem('user', JSON.stringify(updatedUser))
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const triggerFileInput = () => {
+    fileInputRef.current.click()
   }
 
   useEffect(() => {
@@ -65,7 +100,43 @@ const RiwayatTransaksi = () => {
               /* ══════════ CONTACT INFORMATION ══════════ */
               <div>
                 <h2 className="font-serif text-xl text-luvera-text mb-6">Contact Information</h2>
-                <div className="bg-white rounded-lg p-6 space-y-5">
+                <div className="bg-white rounded-lg p-6 space-y-6">
+                  
+                  <div className="flex flex-col sm:flex-row items-center gap-5 pb-6 border-b border-luvera-cream-dark">
+                    <div className="relative group w-24 h-24 rounded-full overflow-hidden bg-luvera-cream border border-luvera-cream-dark shadow-inner">
+                      <img 
+                        src={avatar} 
+                        alt={user?.name} 
+                        className="w-full h-full object-cover"
+                      />
+                      <div 
+                        onClick={triggerFileInput}
+                        className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                      >
+                        <span className="text-[10px] text-white font-medium tracking-wider uppercase text-center px-2">Change Photo</span>
+                      </div>
+                    </div>
+                    
+                    <div className="text-center sm:text-left">
+                      <h3 className="font-serif text-lg text-luvera-text">{user?.name}</h3>
+                      <p className="text-xs text-luvera-muted capitalize mb-3">{user?.role}</p>
+                      <button 
+                        onClick={triggerFileInput}
+                        className="text-[0.7rem] font-semibold tracking-wider uppercase border border-luvera-text/30 px-4 py-1.5 rounded hover:bg-luvera-dark hover:text-white transition-all"
+                      >
+                        Upload New Image
+                      </button>
+                      <input 
+                        type="file" 
+                        ref={fileInputRef}
+                        onChange={handleAvatarChange}
+                        accept="image/*"
+                        className="hidden" 
+                      />
+                    </div>
+                  </div>
+
+                  {/* Grid Data User */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div>
                       <p className="text-xs text-luvera-muted mb-1">Full Name</p>
@@ -123,7 +194,6 @@ const RiwayatTransaksi = () => {
                   <div className="space-y-4">
                     {userTransactions.map((trx) => (
                       <div key={trx.id} className="bg-white rounded-lg p-6 reveal">
-                        {/* Order Header */}
                         <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
                           <p className="text-sm text-luvera-text">
                             <span className="font-medium">Order No. {trx.id}</span>, {trx.date}
@@ -143,7 +213,6 @@ const RiwayatTransaksi = () => {
                           </div>
                         </div>
 
-                        {/* Order Items */}
                         {trx.items.map((item, i) => {
                           const product = products.find((p) => p.id === item.productId)
                           return (
@@ -165,7 +234,6 @@ const RiwayatTransaksi = () => {
                           )
                         })}
 
-                        {/* Order Total */}
                         <div className="border-t border-luvera-cream-dark pt-3 mt-2 space-y-1 text-sm text-right">
                           <p className="text-luvera-muted">STATUS: <span className="font-medium text-luvera-text">{trx.status}</span></p>
                           <p className="text-luvera-muted">Total: Rp {trx.subtotal.toLocaleString('id-ID')}</p>

@@ -35,8 +35,20 @@ const Login = () => {
   const inputClass = "w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm text-luvera-text placeholder-gray-400 outline-none focus:ring-1 focus:ring-luvera-dark focus:border-luvera-dark transition-all"
 
   return (
-    <div className="min-h-screen bg-luvera-cream flex items-center justify-center px-4">
-      <div className="bg-white rounded-2xl shadow-sm p-8 md:p-10 w-full max-w-md">
+    <div className="min-h-screen bg-luvera-cream flex flex-col items-center justify-center px-4 relative">
+      
+      {/* OPTION 1: Floating Back to Home Button (Top Left) */}
+      <Link 
+        to="/" 
+        className="absolute top-6 left-6 flex items-center gap-2 text-xs font-medium tracking-wider uppercase text-luvera-muted hover:text-luvera-dark transition-colors duration-200"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        </svg>
+        Back to Home
+      </Link>
+
+      <div className="bg-white rounded-2xl shadow-sm p-8 md:p-10 w-full max-w-md my-12">
 
         {/* Header */}
         <h1 className="font-serif text-3xl text-center text-luvera-text mb-2">Login</h1>
@@ -52,7 +64,7 @@ const Login = () => {
         )}
 
         {/* Form */}
-        <div className="space-y-5">
+        <form onSubmit={handleLogin} className="space-y-5">
           <div>
             <label className="block text-sm font-medium text-luvera-text mb-1.5">Email</label>
             <input
@@ -95,12 +107,12 @@ const Login = () => {
 
           {/* Login Button */}
           <button
-            onClick={handleLogin}
+            type="submit"
             className="w-full bg-luvera-dark text-white text-sm font-semibold py-3.5 rounded-lg hover:bg-luvera-brown transition-colors duration-300"
           >
             Login
           </button>
-        </div>
+        </form>
 
         {/* Divider */}
         <div className="flex items-center gap-3 my-6">
@@ -123,6 +135,13 @@ const Login = () => {
           <p className="text-sm text-gray-400">
             Don't have an account? <Link to="/register" className="text-luvera-text underline">Create an Account</Link>
           </p>
+          
+          {/* OPTION 2: Subtle Cancel Link (Bottom Center) */}
+          <div className="pt-2">
+            <Link to="/" className="text-xs text-gray-400 hover:text-luvera-brown transition-colors">
+              Cancel and return to Store
+            </Link>
+          </div>
         </div>
 
         {/* Demo hint */}

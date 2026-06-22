@@ -53,7 +53,7 @@ const Keranjang = () => {
 
   return (
     <div className="min-h-screen bg-luvera-cream">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 py-10 md:py-14">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 py-10 md:py-14">
 
         {/* Empty Cart */}
         {cart.length === 0 ? (
@@ -71,7 +71,7 @@ const Keranjang = () => {
             {/* ══════════════════════════════════════
                 CART TABLE
                 ══════════════════════════════════════ */}
-            <div className="bg-white rounded-lg p-6 md:p-8 mb-5 reveal">
+            <div className="bg-white rounded-lg p-5 md:p-8 mb-5 reveal">
               {/* Header — desktop only */}
               <div className="hidden md:grid md:grid-cols-[auto_1fr_120px_100px_120px] gap-4 items-center pb-4 border-b border-luvera-cream-dark">
                 <div className="w-6" />
@@ -146,20 +146,20 @@ const Keranjang = () => {
             </div>
 
             {/* ══════════════════════════════════════
-                COUPON
+                COUPON SECTION (FIXED RESPONSIVE)
                 ══════════════════════════════════════ */}
-            <div className="bg-white rounded-lg p-6 md:p-8 mb-5 reveal">
-              <div className="flex gap-3">
+            <div className="bg-white rounded-lg p-5 md:p-8 mb-5 reveal">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="text"
                   placeholder="Coupon code"
                   value={coupon}
                   onChange={(e) => setCoupon(e.target.value)}
-                  className="flex-1 bg-luvera-cream border-none rounded-sm px-4 py-3 text-[0.85rem] text-luvera-text placeholder:text-luvera-muted/50 outline-none focus:ring-1 focus:ring-luvera-dark"
+                  className="w-full sm:flex-1 bg-luvera-cream border-none rounded-sm px-4 py-3 text-[0.85rem] text-luvera-text placeholder:text-luvera-muted/50 outline-none focus:ring-1 focus:ring-luvera-dark"
                 />
                 <button
                   onClick={handleApplyCoupon}
-                  className="bg-luvera-dark text-white text-[0.78rem] font-semibold tracking-[0.08em] uppercase px-6 py-3 hover:bg-luvera-brown transition-colors duration-300 whitespace-nowrap"
+                  className="w-full sm:w-auto bg-luvera-dark text-white text-[0.78rem] font-semibold tracking-[0.08em] uppercase px-6 py-3 hover:bg-luvera-brown transition-colors duration-300 whitespace-nowrap text-center"
                 >
                   APPLY COUPON
                 </button>
@@ -172,7 +172,7 @@ const Keranjang = () => {
             {/* ══════════════════════════════════════
                 CART TOTALS
                 ══════════════════════════════════════ */}
-            <div className="bg-white rounded-lg p-6 md:p-8 mb-5 reveal">
+            <div className="bg-white rounded-lg p-5 md:p-8 mb-5 reveal">
               <h3 className="text-[0.88rem] font-semibold text-luvera-text mb-4">Cart Totals</h3>
 
               <div className="space-y-3 text-[0.85rem]">
@@ -193,7 +193,6 @@ const Keranjang = () => {
               </div>
             </div>
 
-            {/* PROCEED TO CHECKOUT */}
             {/* PROCEED TO CHECKOUT */}
             {(() => {
               const user = JSON.parse(localStorage.getItem('luvera-user'))

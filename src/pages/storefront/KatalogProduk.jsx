@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-// import { getProducts } from '../../utils/productHelper'
 import products from '../../data/products.json'
 import ProductCard from "../../components/storefront/ProductCard";
 
@@ -14,16 +13,42 @@ const categories = [
 ];
 const ITEMS_PER_PAGE = 8;
 
-// const products = getProducts()
-
 const KatalogProduk = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [sortBy, setSortBy] = useState("default");
   const [currentPage, setCurrentPage] = useState(1);
   const [showSort, setShowSort] = useState(false);
 
-  // Scroll reveal
+  // 1. Amankan logic filter dan sorting menggunakan useMemo agar tidak re-render berantakan
+  const filteredAndSortedProducts = useMemo(() => {
+    // Filter Kategori
+    let result = activeCategory === "All"
+      ? [...products]
+      : products.filter((p) => p.category === activeCategory);
+
+    // Sorting Data
+    if (sortBy === "price-low") result.sort((a, b) => a.price - b.price);
+    if (sortBy === "price-high") result.sort((a, b) => b.price - a.price);
+    if (sortBy === "name") result.sort((a, b) => a.name.localeCompare(b.name));
+    if (sortBy === "rating") result.sort((a, b) => b.rating - a.rating);
+
+    return result;
+  }, [activeCategory, sortBy]); // Berjalan otomatis setiap kategori atau sort berubah
+
+  // Pagination data diambil dari hasil memo
+  const totalPages = Math.ceil(filteredAndSortedProducts.length / ITEMS_PER_PAGE);
+  const paginated = useMemo(() => {
+    return filteredAndSortedProducts.slice(
+      (currentPage - 1) * ITEMS_PER_PAGE,
+      currentPage * ITEMS_PER_PAGE,
+    );
+  }, [filteredAndSortedProducts, currentPage]);
+
+  // 2. Perbaikan Scroll Reveal: Tambahkan sortBy ke dependency array!
   useEffect(() => {
+    // Hapus class visible lama sesaat agar animasi masuknya rapi dan serempak dari awal
+    document.querySelectorAll(".reveal").forEach((el) => el.classList.remove("visible"));
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -33,38 +58,23 @@ const KatalogProduk = () => {
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.05 }, // Diturunkan sedikit agar trigger-nya lebih cepat terasa instan
     );
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [activeCategory, currentPage]);
 
-  // Filter by category
-  let filtered =
-    activeCategory === "All"
-      ? products
-      : products.filter((p) => p.category === activeCategory);
+    // Berikan sedikit jeda mikro (timeout) agar DOM selesai menyusun urutan produk baru sebelum di-observe
+    const timer = setTimeout(() => {
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    }, 50);
 
-  // Sort
-  if (sortBy === "price-low")
-    filtered = [...filtered].sort((a, b) => a.price - b.price);
-  if (sortBy === "price-high")
-    filtered = [...filtered].sort((a, b) => b.price - a.price);
-  if (sortBy === "name")
-    filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name));
-  if (sortBy === "rating")
-    filtered = [...filtered].sort((a, b) => b.rating - a.rating);
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [activeCategory, currentPage, sortBy]); // <--- sortBy WAJIB masuk sini agar ter-refresh otomatis tanpa f5
 
-  // Pagination
-  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-  const paginated = filtered.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE,
-  );
-
-  // Reset page saat ganti category/sort
   const handleCategoryChange = (cat) => {
     setActiveCategory(cat);
+    setSortBy("default"); // Opsional: reset sort ke default tiap ganti kategori agar tidak membingungkan pembeli
     setCurrentPage(1);
   };
 
@@ -128,7 +138,6 @@ const KatalogProduk = () => {
           </button>
 
           {/* Sort Dropdown */}
-          {/* Sort Dropdown */}
           <div className="relative">
             <button
               onClick={() => setShowSort(!showSort)}
@@ -152,7 +161,6 @@ const KatalogProduk = () => {
 
             {showSort && (
               <>
-                {/* Backdrop — klik di luar nutup dropdown */}
                 <div
                   className="fixed inset-0 z-10"
                   onClick={() => setShowSort(false)}
@@ -194,7 +202,7 @@ const KatalogProduk = () => {
             <div
               key={product.id}
               className="reveal"
-              style={{ transitionDelay: `${i * 0.05}s` }}
+              style={{ transitionDelay: `${i * 0.03}s` }} // Dibuat sedikit lebih cepat (0.03s) agar pergantian terasa halus
             >
               <ProductCard product={product} />
             </div>
