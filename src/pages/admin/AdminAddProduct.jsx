@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getProductById, addProduct, updateProduct } from '../../utils/productHelper'
 
 const AdminAddProduct = () => {
   const { id } = useParams()
   const navigate = useNavigate()
+  const fileInputRef = useRef(null)
   const isEdit = id && id !== 'add'
 
   const [form, setForm] = useState({
@@ -15,12 +16,12 @@ const AdminAddProduct = () => {
     stock: '',
     category: 'Face Care',
     size: '',
-    image: '/images/products/face-wash.jpg',
+    image: '', // Awalnya kosong, nanti diisi string base64 hasil upload
     featured: false,
   })
   const [saved, setSaved] = useState(false)
 
-  // Load product data kalau edit mode
+  // Load product data kalau dalam mode edit
   useEffect(() => {
     if (isEdit) {
       const product = getProductById(id)
@@ -33,7 +34,7 @@ const AdminAddProduct = () => {
           stock: product.stock ?? '',
           category: product.category || 'Face Care',
           size: product.size || '',
-          image: product.image || '/images/products/face-wash.png',
+          image: product.image || '',
           featured: product.featured || false,
         })
       }
@@ -42,6 +43,24 @@ const AdminAddProduct = () => {
 
   const handleChange = (field, value) => {
     setForm({ ...form, [field]: value })
+  }
+
+  // Fungsi untuk handle konversi upload file gambar ke string Base64
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
+    // Validasi ukuran (opsional, disarankan < 2MB karena kapasitas Local Storage terbatas)
+    if (file.size > 2 * 1024 * 1024) {
+      alert('Image size is too large! Please upload an image under 2MB.')
+      return
+    }
+
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      handleChange('image', reader.result) // reader.result berisi string base64 data:image/...
+    }
+    reader.readAsDataURL(file)
   }
 
   const handleSubmit = () => {
@@ -59,8 +78,8 @@ const AdminAddProduct = () => {
       stock: parseInt(form.stock) || 0,
       category: form.category,
       size: form.size,
-      image: form.image,
-      images: [form.image],
+      image: form.image || '/images/products/face-wash.jpg', // Fallback jika tidak upload gambar
+      images: [form.image || '/images/products/face-wash.jpg'],
       featured: form.featured,
     }
 
@@ -94,6 +113,19 @@ const AdminAddProduct = () => {
 
   return (
     <div>
+      {/* Breadcrumb Navigation Path */}
+      <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+        <Link to="/admin" className="hover:text-[#1A7A6D] transition-colors">Dashboard</Link>
+        <span>/</span>
+        <Link to="/admin/products" className="hover:text-[#1A7A6D] transition-colors">
+          Products
+        </Link>
+        <span className="text-gray-400">/</span>
+        <span className="text-gray-700 font-medium">
+          {isEdit ? 'Edit Product' : 'Add New Product'}
+        </span>
+      </nav>
+
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-xl font-semibold text-[#1A7A6D]">
@@ -195,23 +227,57 @@ const AdminAddProduct = () => {
 
         {/* Right Column */}
         <div className="space-y-5">
-          {/* Image */}
+          {/* Image Upload Area */}
           <div className="bg-white rounded-lg p-6">
             <h2 className="text-base font-semibold text-gray-800 mb-4">Product Image</h2>
-            {form.image && (
-              <img src={form.image} alt="Preview" className="w-full h-48 object-cover rounded-lg bg-gray-100 mb-3" />
+            
+            {/* Hidden native input file */}
+            <input 
+              type="file"
+              ref={fileInputRef}
+              onChange={handleImageUpload}
+              accept="image/*"
+              className="hidden"
+            />
+
+            {form.image ? (
+              <div className="relative group rounded-lg overflow-hidden border border-gray-200">
+                <img 
+                  src={form.image} 
+                  alt="Preview" 
+                  className="w-full h-48 object-cover bg-gray-50" 
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current.click()}
+                    className="bg-white text-gray-700 text-xs font-medium px-3 py-1.5 rounded hover:bg-gray-100 transition-colors"
+                  >
+                    Change Image
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleChange('image', '')}
+                    className="bg-red-600 text-white text-xs font-medium px-3 py-1.5 rounded hover:bg-red-700 transition-colors"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            ) : (
+              /* Drag and Click zone wrapper */
+              <button
+                type="button"
+                onClick={() => fileInputRef.current.click()}
+                className="w-full h-48 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center p-4 text-center hover:border-[#1A7A6D] hover:bg-gray-50/50 transition-all group"
+              >
+                <svg className="w-8 h-8 text-gray-400 group-hover:text-[#1A7A6D] mb-2 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <span className="text-xs font-medium text-gray-600 group-hover:text-[#1A7A6D] transition-colors">Click to upload product image</span>
+                <span className="text-[10px] text-gray-400 mt-1">Supports JPG, PNG up to 2MB</span>
+              </button>
             )}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Image Path</label>
-              <input
-                type="text"
-                placeholder="/images/products/nama-file.png"
-                value={form.image}
-                onChange={(e) => handleChange('image', e.target.value)}
-                className={inputClass}
-              />
-              <p className="text-xs text-gray-400 mt-1">Path gambar di folder public/images/products/</p>
-            </div>
           </div>
 
           {/* Categories */}
@@ -249,6 +315,7 @@ const AdminAddProduct = () => {
 
           {/* Back Button */}
           <button
+            type="button"
             onClick={() => navigate('/admin/products')}
             className="w-full border border-gray-300 text-gray-600 text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-gray-50 transition-colors"
           >

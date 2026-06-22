@@ -26,7 +26,7 @@ const menuItems = [
     ),
   },
   {
-    to: '/admin/blog', label: 'All Blog',
+    to: '/admin/blog', label: 'All Article',
     icon: (
       <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25H5.625a2.25 2.25 0 01-2.25-2.25V7.875c0-.621.504-1.125 1.125-1.125H8.25m8.25 0V5.625c0-.621-.504-1.125-1.125-1.125H9.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125h5.25c.621 0 1.125-.504 1.125-1.125" />
@@ -43,33 +43,61 @@ const menuItems = [
   },
 ]
 
-const AdminSidebar = () => {
+const AdminSidebar = ({ isOpen, onClose }) => {
   return (
-    <aside className="w-56 bg-white border-r border-gray-200 min-h-screen p-4 hidden md:block">
-      {/* Logo */}
-      <h1 className="font-serif text-xl text-gray-800 mb-8 px-2">Luvéra</h1>
+    <>
+      {/* Backdrop Gelap - Muncul cuma di mobile saat sidebar aktif */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/40 z-40 md:hidden transition-opacity"
+          onClick={onClose}
+        />
+      )}
 
-      {/* Menu */}
-      <nav className="space-y-1">
-        {menuItems.map((item) => (
-          <NavLink
-            key={item.to}
-            to={item.to}
-            end={item.end}
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
-                isActive
-                  ? 'bg-[#1A7A6D] text-white'
-                  : 'text-gray-600 hover:bg-gray-100'
-              }`
-            }
+      {/* Sidebar Layout */}
+      <aside className={`
+        fixed inset-y-0 left-0 z-50 w-56 bg-white border-r border-gray-200 p-4 
+        transform transition-transform duration-300 ease-in-out
+        md:relative md:transform-none md:z-auto md:flex md:flex-col
+        ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+      `}>
+        {/* Logo & Tombol Close (Mobile) */}
+        <div className="flex items-center justify-between mb-8 px-2">
+          <h1 className="font-serif text-xl font-bold text-gray-800">Luvéra</h1>
+          <button 
+            onClick={onClose}
+            className="p-1 rounded-md text-gray-400 hover:bg-gray-100 md:hidden"
+            title="Close Menu"
           >
-            {item.icon}
-            <span>{item.label}</span>
-          </NavLink>
-        ))}
-      </nav>
-    </aside>
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Menu Navigation */}
+        <nav className="space-y-1 flex-1">
+          {menuItems.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.end}
+              onClick={onClose} // Nutup sidebar otomatis di mobile setelah klik menu
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  isActive
+                    ? 'bg-[#1A7A6D] text-white shadow-sm'
+                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                }`
+              }
+            >
+              {item.icon}
+              <span>{item.label}</span>
+            </NavLink>
+          ))}
+        </nav>
+      </aside>
+    </>
   )
 }
 

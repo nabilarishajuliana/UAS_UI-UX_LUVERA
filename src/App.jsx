@@ -27,6 +27,7 @@ import AdminAddProduct from './pages/admin/AdminAddProduct'
 import AdminAddArticle from './pages/admin/AdminAddArticle'
 import AdminDetailPengguna from './pages/admin/AdminDetailPengguna'
 import AdminDetailTransaksi from './pages/admin/AdminDetailTransaksi'
+import AdminPreviewArtikel from './pages/admin/AdminPreviewArtikel'
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
           <Route path="customers/:id" element={<AdminDetailPengguna />} />
           <Route path="orders" element={<KelolaTransaksi />} />
           <Route path="orders/:id" element={<AdminDetailTransaksi />} />
+          <Route path="blog/preview/:id" element={<AdminPreviewArtikel />} />
         </Route>
 
       </Routes>

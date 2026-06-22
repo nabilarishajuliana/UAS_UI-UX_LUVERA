@@ -21,7 +21,7 @@ const KelolaArtikel = () => {
     <div>
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-xl font-semibold text-gray-800">All Blog</h1>
+        <h1 className="text-xl font-semibold text-gray-800">All Article</h1>
         <Link
           to="/admin/blog/add"
           className="flex items-center gap-2 bg-[#1A7A6D] text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-[#15665b] transition-colors"
@@ -86,10 +86,10 @@ const KelolaArtikel = () => {
                         <span className="text-sm text-gray-700 max-w-xs truncate">{article.title}</span>
                       </div>
                     </td>
-                    <td className="px-4 py-3 text-sm text-gray-600">{article.date}</td>
+                    <td className="px-4 py-3 text-sm text-gray-600">{article.date || 'June 22, 2026'}</td>
                     <td className="px-4 py-3">
                       <div className="flex gap-1 flex-wrap">
-                        {article.tags.slice(0, 3).map((tag) => (
+                        {article.tags && article.tags.slice(0, 3).map((tag) => (
                           <span
                             key={tag}
                             className="text-[10px] bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full"
@@ -97,13 +97,26 @@ const KelolaArtikel = () => {
                             {tag}
                           </span>
                         ))}
-                        {article.tags.length > 3 && (
+                        {article.tags && article.tags.length > 3 && (
                           <span className="text-[10px] text-gray-400">+{article.tags.length - 3}</span>
                         )}
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center justify-center gap-3">
+                        {/* BUTTON VIEW PREVIEW (KE FILE BARU) */}
+                        <Link
+                          to={`/admin/blog/preview/${article.id}`}
+                          className="text-gray-500 hover:text-[#1A7A6D] transition-colors"
+                          title="View Draft Preview"
+                        >
+                          <svg className="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                        </Link>
+
+                        {/* BUTTON EDIT */}
                         <button
                           onClick={() => navigate(`/admin/blog/${article.id}`)}
                           className="text-[#1A7A6D] hover:text-[#15665b]"
@@ -113,6 +126,8 @@ const KelolaArtikel = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z" />
                           </svg>
                         </button>
+
+                        {/* BUTTON DELETE */}
                         <button
                           onClick={() => handleDelete(article.id, article.title)}
                           className="text-red-500 hover:text-red-700"
