@@ -26,32 +26,29 @@ const LandingPage = () => {
     <div>
 
       {/* ══════════════════════════════════════
-          SECTION 1: HERO
+          SECTION 1: HERO — full screen
           ══════════════════════════════════════ */}
-      <section className="relative w-full h-screen min-h-[580px] max-h-[900px] overflow-hidden flex items-end">
+      <section className="relative w-full h-screen overflow-hidden flex items-end">
         <div
           className="absolute inset-0 animate-hero-zoom bg-cover bg-center"
           style={{
-            backgroundImage: `linear-gradient(160deg, rgba(27,38,28,0.2) 0%, rgba(0,0,0,0.5) 100%), url('/images/banners/hero.png')`,
+            backgroundImage: `linear-gradient(160deg, rgba(20,30,20,0.15) 0%, rgba(0,0,0,0.5) 100%), url('/images/banners/hero.png')`,
           }}
         />
+        <div className="absolute top-[140px] left-[70px] w-[65px] h-[65px] border border-white/20 rounded-full pointer-events-none hidden md:block" />
+        <div className="absolute top-[200px] right-[90px] w-[95px] h-[95px] border border-white/15 rounded-full pointer-events-none hidden md:block" />
 
-        {/* Decorative shapes */}
-        <div className="absolute top-[120px] left-[60px] w-[70px] h-[70px] border border-white/25 rounded-full pointer-events-none hidden md:block" />
-        <div className="absolute top-[180px] right-[80px] w-[100px] h-[100px] border border-white/15 rounded-full pointer-events-none hidden md:block" />
-        <div className="absolute bottom-[180px] left-[40px] w-[45px] h-[45px] border border-white/20 pointer-events-none hidden md:block" />
-
-        <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 items-end gap-6 px-6 md:px-12 pb-14 md:pb-20">
-          <h1 className="font-serif text-[clamp(4.5rem,11vw,9rem)] font-bold text-luvera-white leading-[0.88] tracking-tight animate-fade-up">
+        <div className="relative z-10 w-full grid grid-cols-1 md:grid-cols-2 items-end px-8 md:px-16 pb-16 md:pb-24">
+          <h1 className="font-serif text-[clamp(5rem,12vw,10rem)] font-bold text-white leading-[0.85] tracking-tight animate-fade-up">
             Luvéra
           </h1>
-          <div className="md:text-right animate-fade-up-delay">
-            <p className="text-[0.82rem] text-white/75 leading-[1.8] max-w-[200px] md:ml-auto mb-5">
+          <div className="md:text-right animate-fade-up-delay mt-6 md:mt-0">
+            <p className="text-[0.8rem] text-white/70 leading-[1.9] max-w-[180px] md:ml-auto mb-5">
               We craft clean, grounded skincare using nature's finest ingredients, perfected with careful formulation.
             </p>
             <Link
               to="/shop"
-              className="inline-block text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-luvera-white border border-white/50 px-8 py-3 hover:bg-white hover:text-luvera-dark hover:border-white transition-all duration-300"
+              className="inline-block text-[0.68rem] font-semibold tracking-[0.16em] uppercase text-white border border-white/40 px-8 py-3 hover:bg-white hover:text-luvera-dark transition-all duration-300"
             >
               Check Out Now
             </Link>
@@ -61,21 +58,28 @@ const LandingPage = () => {
 
 
       {/* ══════════════════════════════════════
-          SECTION 2: NATURE REFINED
+          SECTION 2: NATURE REFINED — min 70vh, teks besar sentral
           ══════════════════════════════════════ */}
-      <section className="relative bg-luvera-cream py-16 md:py-24">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-luvera-brown/40 to-transparent" />
+      <section className="relative bg-luvera-cream flex flex-col items-center justify-center min-h-[70vh] py-20 px-6">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-luvera-brown/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-luvera-brown/20 to-transparent" />
 
-        <div className="max-w-[720px] mx-auto px-6 text-center">
-          <p className="text-[0.68rem] tracking-[0.22em] uppercase text-luvera-brown mb-6 reveal">
+        {/* Decorative line atas */}
+        <div className="w-px h-12 bg-luvera-brown/25 mb-10 reveal" />
+
+        <div className="max-w-[700px] mx-auto text-center">
+          <p className="text-[0.65rem] tracking-[0.28em] uppercase text-luvera-brown mb-7 reveal">
             Nature Refined
           </p>
-          <blockquote className="font-serif text-[clamp(1.35rem,3vw,2.2rem)] font-normal leading-[1.5] text-luvera-text reveal">
+          <blockquote className="font-serif text-[clamp(1.5rem,3.2vw,2.3rem)] font-normal leading-[1.65] text-luvera-text reveal">
             Experience the ultimate harmony{' '}
             <em className="italic text-luvera-brown">where pure, earth-grown ingredients meet a truly</em>{' '}
             indulgent and luxurious skincare ritual.
           </blockquote>
         </div>
+
+        {/* Decorative line bawah */}
+        <div className="w-px h-12 bg-luvera-brown/25 mt-10 reveal" />
       </section>
 
 
@@ -151,49 +155,49 @@ const LandingPage = () => {
 
 
       {/* ══════════════════════════════════════
-          SECTION 4: TESTIMONIALS
+          SECTION 4: TESTIMONIALS — min 80vh, kartu tinggi
           ══════════════════════════════════════ */}
-      <section className="bg-luvera-cream py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <p className="text-[0.68rem] tracking-[0.22em] uppercase text-luvera-muted mb-2 reveal">
+      <section className="bg-luvera-cream flex flex-col justify-center min-h-[80vh] py-16 md:py-24">
+        <div className="w-full px-4 md:px-8">
+          <p className="text-[0.65rem] tracking-[0.28em] uppercase text-luvera-muted mb-3 reveal">
             Customers
           </p>
-          <h2 className="font-serif text-[clamp(1.5rem,3.5vw,2.2rem)] font-normal text-luvera-text mb-8 reveal">
+          <h2 className="font-serif text-[clamp(2rem,5vw,3.2rem)] font-normal text-luvera-text mb-10 reveal">
             Don't just take it from us
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               {
                 img: '/images/testimonials/testi-1.jpg',
-                text: "My skin feels smoother than ever. Within 2 weeks I could already see a real glow.",
+                text: "My skin feels smoother than ever. I didn't expect results this fast, but within 2 weeks I could already see a real glow.",
                 name: 'Chloe Bennett'
               },
               {
-                img: '/images/testimonials/testi-2.jpg',
-                text: "This is the first product that truly calmed and softened my skin. It's now part of my daily routine.",
+                img: '/images/testimonials/testi-3.jpg',
+                text: "I've tried so many products before, but this is the one that truly calmed and softened my skin. It's now part of my daily routine.",
                 name: 'Amelia Heart'
               },
               {
-                img: '/images/testimonials/testi-3.jpg',
+                img: '/images/testimonials/testi-4.jpg',
                 text: "The texture is amazing. My skin looks healthier and more fresh every morning.",
                 name: 'Shanon'
               },
             ].map((testi, i) => (
               <div
                 key={i}
-                className="relative rounded-xl overflow-hidden h-64 md:h-72 group cursor-pointer reveal"
-                style={{ transitionDelay: `${i * 0.1}s` }}
+                className="relative rounded-xl overflow-hidden h-80 md:h-96 group cursor-pointer reveal"
+                style={{ transitionDelay: `${i * 0.12}s` }}
               >
                 <img
                   src={testi.img}
                   alt={testi.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <p className="text-white text-[0.8rem] leading-relaxed mb-2">{testi.text}</p>
-                  <p className="text-white/50 text-[0.72rem]">— {testi.name}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-white text-[0.82rem] leading-[1.7] mb-3">{testi.text}</p>
+                  <p className="text-white/50 text-[0.7rem] tracking-wider">— {testi.name}</p>
                 </div>
               </div>
             ))}
@@ -201,28 +205,54 @@ const LandingPage = () => {
         </div>
       </section>
 
+{/* ══════════════════════════════════════
+    MARQUEE — Brand values ticker
+    ══════════════════════════════════════ */}
+<div className="bg-luvera-cream py-8 border-y border-luvera-brown/15 overflow-hidden">
+  <div className="flex whitespace-nowrap animate-marquee">
+    {[...Array(3)].map((_, i) => (
+      <span key={i} className="flex items-center gap-0 shrink-0">
+        {[
+          'CLEAN BEAUTY',
+          'NATURE REFINED',
+          'SKIN RITUAL',
+          'ETHICALLY SOURCED',
+          'DERMATOLOGIST TESTED',
+          'CONSCIOUS LUXURY',
+        ].map((text, j) => (
+          <span key={j} className="flex items-center">
+            <span className="font-serif italic text-luvera-brown/60 text-[0.85rem] tracking-widest px-8">
+              {text}
+            </span>
+            <span className="text-luvera-brown/30 text-[0.6rem]">✦</span>
+          </span>
+        ))}
+      </span>
+    ))}
+  </div>
+</div>
 
       {/* ══════════════════════════════════════
-          SECTION 5: BLOG PREVIEW
+          SECTION 5: BLOG PREVIEW — min 80vh, gambar besar
           ══════════════════════════════════════ */}
-      <section className="bg-luvera-cream pb-16 md:pb-24 border-t border-luvera-cream-dark">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 pt-14 md:pt-20">
-          <div className="flex items-end justify-between mb-8 reveal">
+      <section className="bg-luvera-cream flex flex-col justify-center min-h-[80vh] py-16 md:py-24">
+        <div className="w-full px-4 md:px-8">
+          <div className="flex items-end justify-between mb-10 reveal">
             <div>
-              <p className="text-[0.68rem] tracking-[0.22em] uppercase text-luvera-muted mb-2">Blog</p>
-              <h2 className="font-serif text-[clamp(1.5rem,3.5vw,2.2rem)] font-normal text-luvera-text">
+              <p className="text-[0.65rem] tracking-[0.28em] uppercase text-luvera-muted mb-3">Blog</p>
+              <h2 className="font-serif text-[clamp(2rem,5vw,3.2rem)] font-normal text-luvera-text">
                 How to Elevate Your Experience
               </h2>
             </div>
             <Link
               to="/blog"
-              className="hidden md:inline-block text-[0.72rem] font-semibold tracking-[0.12em] uppercase border border-luvera-text px-5 py-2 hover:bg-luvera-dark hover:text-white hover:border-luvera-dark transition-all duration-300"
+              className="hidden md:inline-block text-[0.7rem] font-semibold tracking-[0.14em] uppercase border border-luvera-text px-6 py-2.5 hover:bg-luvera-dark hover:text-white hover:border-luvera-dark transition-all duration-300"
             >
               VIEW ALL
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {previewArticles.map((article, i) => (
               <Link
                 to={`/blog/${article.id}`}
@@ -230,26 +260,26 @@ const LandingPage = () => {
                 className="group reveal"
                 style={{ transitionDelay: `${i * 0.1}s` }}
               >
-                <div className="overflow-hidden rounded-lg mb-4">
+                <div className="overflow-hidden rounded-xl mb-5">
                   <img
                     src={article.image}
                     alt={article.title}
-                    className="w-full h-56 md:h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-60 md:h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <h3 className="font-semibold text-[0.95rem] text-luvera-text group-hover:text-luvera-brown transition-colors duration-300 leading-snug mb-1.5">
+                <h3 className="font-semibold text-[1rem] text-luvera-text group-hover:text-luvera-brown transition-colors duration-300 leading-snug mb-2">
                   {article.title}
                 </h3>
-                <p className="text-[0.68rem] text-luvera-muted uppercase tracking-[0.12em] mb-2">{article.date}</p>
-                <p className="text-[0.82rem] text-luvera-muted leading-[1.7] line-clamp-2">{article.excerpt}</p>
+                <p className="text-[0.67rem] text-luvera-muted uppercase tracking-[0.12em] mb-2.5">{article.date}</p>
+                <p className="text-[0.83rem] text-luvera-muted leading-[1.7] line-clamp-2">{article.excerpt}</p>
               </Link>
             ))}
           </div>
 
-          <div className="mt-8 md:hidden text-center reveal">
+          <div className="mt-10 md:hidden text-center reveal">
             <Link
               to="/blog"
-              className="inline-block text-[0.72rem] font-semibold tracking-[0.12em] uppercase border border-luvera-text px-5 py-2 hover:bg-luvera-dark hover:text-white hover:border-luvera-dark transition-all duration-300"
+              className="inline-block text-[0.7rem] font-semibold tracking-[0.14em] uppercase border border-luvera-text px-6 py-2.5 hover:bg-luvera-dark hover:text-white hover:border-luvera-dark transition-all duration-300"
             >
               VIEW ALL
             </Link>

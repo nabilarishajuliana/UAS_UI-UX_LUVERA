@@ -129,9 +129,9 @@ const Login = () => {
 
         {/* Links */}
         <div className="text-center mt-6 space-y-2">
-          <p className="text-sm text-gray-400">
+          {/* <p className="text-sm text-gray-400">
             Forgot your password? <span className="text-luvera-text underline cursor-pointer">Recover password</span>
-          </p>
+          </p> */}
           <p className="text-sm text-gray-400">
             Don't have an account? <Link to="/register" className="text-luvera-text underline">Create an Account</Link>
           </p>

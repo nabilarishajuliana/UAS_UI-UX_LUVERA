@@ -29,16 +29,29 @@
 }
 
 @layer base {
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     font-family: var(--font-sans);
     color: var(--color-luvera-text);
     background-color: var(--color-luvera-cream);
     overflow-x: hidden;
   }
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--color-luvera-cream); }
-  ::-webkit-scrollbar-thumb { background: var(--color-luvera-dark); border-radius: 3px; }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-luvera-cream);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-luvera-dark);
+    border-radius: 3px;
+  }
 }
 
 /* ============================================
@@ -46,12 +59,18 @@
    ============================================ */
 
 @layer utilities {
+
   /* Hero zoom */
   .animate-hero-zoom {
     transform: scale(1.04);
     animation: heroZoom 8s ease-out forwards;
   }
-  @keyframes heroZoom { to { transform: scale(1); } }
+
+  @keyframes heroZoom {
+    to {
+      transform: scale(1);
+    }
+  }
 
   /* Fade up */
   .animate-fade-up {
@@ -59,12 +78,19 @@
     transform: translateY(30px);
     animation: fadeUp 1s ease forwards;
   }
+
   .animate-fade-up-delay {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeUp 1s 0.6s ease forwards;
   }
-  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   /* Scroll reveal */
   .reveal {
@@ -72,6 +98,7 @@
     transform: translateY(28px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
+
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
@@ -84,18 +111,34 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-    .line-clamp-3 {
+
+  .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-    .scrollbar-hide {
+  .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-33.333%);
+    }
   }
 }
